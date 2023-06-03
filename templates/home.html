@@ -169,39 +169,37 @@
         </div> 
 		    <div class="d-flex justify-content-center justify-content-lg-start" >
                 
-                <a id="btn" class="btn-get-started"  onclick='href="http://192.168.18.17:8501"' > Check Hate</a>
+                <a id="btn" class="btn-get-started" onclick='href="/model_output"'> Check Hate</a>
                 
                 <script src="{{url_for('static',filename='js/display.js')}}"> </script>
                 <script>
                  $(document).ready(function(){
                   $('.btn-get-started').click(function(){
                     const message = $('[name=message]').val();
-                      if(message == "")
-                      {
-              
-                      }
-                      else
+                      if(message != "")
                       {
                         $.ajax({
                           
-                            url   : '/create_file',
-                           type : 'POST',
-                           data   : {input : $('#input').val()},
+                          url: '/create_file',
+                          type : 'POST',
+                          data   : {input : $('#input').val()},
                           dataType: 'text',
-                          /*success : function(data){
-                            alert(data);
-                           }*/
-                           
-                        });
+                          success : function(data){
+                          alert(data);
+                         }
+                         
+                      });
                       }
+                      else
+                      {
+                        //do nothing
+                    }
               
               
                   });
                   
                 });
               </script>
-              
-            
               
         </div>
 		    
