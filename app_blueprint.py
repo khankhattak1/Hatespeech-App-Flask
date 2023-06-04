@@ -29,7 +29,7 @@ def model_output():
 @app_blueprint.route('/create_file', methods=['POST', 'GET'])
 def create_file():
     url_scraper = request.form['input']
-    
+
     if not(url_scraper.startswith("http://") or url_scraper.startswith("https://")):   
         #get the textual data only
         r = urllib.request.urlopen(url_scraper).read()
@@ -41,7 +41,7 @@ def create_file():
         elif soup.find(class_="q-inlineFlex qu-mr--small"):
             soup.find( class_="q-inlineFlex qu-mr--small").decompose()
         # create txt file
-        file = open("E:\\Data Science\Web-Practice\\Hatespeech-App-Flask\\scrapped_file\\scrap_data.txt","w", encoding="utf-8")
+        file = open("E:\\Data Science\Web-Practice\\Hatespeech-App-Flask\\scrapped_file\\scrap_data.txt","w", encoding="utf-8")  # noqa: E501
         file.write(soup.get_text())
         file.flush()
         file.close()
